@@ -1,42 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import cover from "@/public/cover.jpg"
 import Image from "next/image";
+import { Locale } from "@/i18n.config";
+import { getData } from "@/lib/dictionary";
 
-export default function Home() {
-  let books = [
-    {
-      title: 'Paperback',
-      price: '£19.90',
-      status: 'Pre-order now',
-      link: 'https://buy.stripe.com/test_7sI9Ca5i8e2k14A001',
-      availability: true
-    },
-    {
-      title: 'Hardcover',
-      price: '£39.90',
-      status: 'Out of stock',
-      link: 'https://buy.stripe.com/test_7sI9Ca5i8e2k14A001',
-      availability: false
-    },
-    {
-      title: 'e-Book',
-      price: '£9.90',
-      status: 'Buy now',
-      link: 'https://buy.stripe.com/test_7sI9Ca5i8e2k14A001',
-      availability: true
-    }
-  ]
+export default async function Home({
+  params: { lang }
+}: {
+  params: { lang: Locale }
+}) {
+  const { pages, books } = await getData(lang);
   return (
     <div className="flex flex-col min-h-[100dvh]">
     <main className="flex-1">
       <section className="w-full px-5 py-12 md:px-10">
-        <h1 className="text-3xl font-bold uppercase text-center">How to move from the city to the countryside</h1>
-        <p className="text-neutral-500 text-center my-5 max-w-[600px] mx-auto">
-        Embark on a transformative journey from the bustling city streets to the tranquil expanse of the countryside. This concise guide offers practical advice and step-by-step instructions for those dreaming of a simpler, more sustainable life amidst nature. Learn how to seamlessly transition to rural living, from selecting your new home to cultivating your own food and integrating into the countryside. Discover the essentials of growing produce, raising animals, and choosing the right tools to navigate your new lifestyle. Whether you are drawn to the peace of rural spaces or the independence of self-sufficiency, this book illuminates the path to achieving your countryside living dreams.
-        </p>
-        <h2 className="text-2xl font-semibold mb-3 text-center">Choose Your Book</h2>
+        <h1 className="text-3xl font-bold uppercase text-center">{pages.home.bookTitle}</h1>
+        <p className="text-neutral-500 text-center my-5 max-w-[600px] mx-auto">{pages.home.bookDesctiption}</p>
+        <h2 className="text-2xl font-semibold mb-3 text-center">{pages.home.choiceTitle}</h2>
         <div className="flex justify-around flex-wrap gap-5">
           {books.map((e, index) => (
             <div key={index}>
@@ -79,10 +60,8 @@ export default function Home() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-neutral-100 dark:bg-neutral-800">
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
           <div className="space-y-3">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">About the Author</h2>
-            <p className="mx-auto max-w-[600px] text-neutral-500">
-            Gleb Feels, a Serbian influencer renowned for his lifestyle shift from London&apos;s hustle to Serbia&apos;s tranquil countryside, shares his journey through TikTok and Instagram. Embracing rural life, Gleb advocates for self-sufficiency, from cultivating food to coexisting with nature. His book, &quot;Moving from the City to the Countryside,&quot; distills his experiences into practical advice for others seeking a similar transformation. Gleb&apos;s narrative inspires a deeper connection with the environment and a more fulfilling way of life.
-            </p>
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">{pages.home.aboutAuthor}</h2>
+            <p className="mx-auto max-w-[600px] text-neutral-500">{pages.home.authorDescription}</p>
           </div>
         </div>
       </section>

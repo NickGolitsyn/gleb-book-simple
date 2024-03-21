@@ -1,0 +1,34 @@
+{
+  "pages": {
+    "home": {
+      "bookTitle": "HOW TO MOVE FROM THE CITY TO THE COUNTRYSIDE",
+      "bookDesctiption": "Embark on a transformative journey from the bustling city streets to the tranquil expanse of the countryside. This concise guide offers practical advice and step-by-step instructions for those dreaming of a simpler, more sustainable life amidst nature. Learn how to seamlessly transition to rural living, from selecting your new home to cultivating your own food and integrating into the countryside. Discover the essentials of growing produce, raising animals, and choosing the right tools to navigate your new lifestyle. Whether you are drawn to the peace of rural spaces or the independence of self-sufficiency, this book illuminates the path to achieving your countryside living dreams.",
+      "choiceTitle": "Choose Your Book",
+      "aboutAuthor": "About the Author",
+      "authorDescription": "Gleb Feels, a Serbian influencer renowned for his lifestyle shift from London's hustle to Serbia's tranquil countryside, shares his journey through TikTok and Instagram. Embracing rural life, Gleb advocates for self-sufficiency, from cultivating food to coexisting with nature. His book, &quot;Moving from the City to the Countryside,&quot; distills his experiences into practical advice for others seeking a similar transformation. Gleb's narrative inspires a deeper connection with the environment and a more fulfilling way of life."
+    }
+  },
+  "books": [
+    {
+      "title": "Paperback",
+      "price": "£19.90",
+      "status": "Pre-order now",
+      "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
+      "availability": true
+    },
+    {
+      "title": "Hardcover",
+      "price": "£39.90",
+      "status": "Out of stock",
+      "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
+      "availability": false
+    },
+    {
+      "title": "e-Book",
+      "price": "£9.90",
+      "status": "Buy now",
+      "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
+      "availability": true
+    }
+  ]
+}

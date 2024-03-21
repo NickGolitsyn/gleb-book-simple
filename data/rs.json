@@ -1,0 +1,34 @@
+{
+  "pages": {
+    "home": {
+      "bookTitle": "KAKO SE IZ GRADA PRESELITI NA SELO",
+      "bookDesctiption": "Krenite na transformativno putovanje od užurbanih gradskih ulica do mirnog prostranstva sela. Ovaj sažeti vodič nudi praktične savete i uputstva korak po korak za one koji sanjaju o jednostavnijem, održivijem životu usred prirode. Naučite kako da neprimetno pređete na seoski život, od izbora novog doma do negovanja sopstvene hrane i integracije u selo. Otkrijte osnove uzgoja proizvoda, uzgoja životinja i odabira pravih alata za navigaciju u novom životnom stilu. Bez obzira da li vas privlači mir ruralnih prostora ili nezavisnost samodovoljnosti, ova knjiga vam osvetljava put ka ostvarenju vaših životnih snova na selu.",
+      "choiceTitle": "Izaberite svoju Knjigu",
+      "aboutAuthor": "O Autoru",
+      "authorDescription": "Gleb Feels, srpski influenser poznat po promeni načina života sa londonske užurbanosti na mirnu srpsku prirodu, deli svoje putovanje kroz TikTok i Instagram. Prihvatajući seoski život, Gleb se zalaže za samodovoljnost, od uzgoja hrane do suživota sa prirodom. Njegova knjiga &kuot;Selidba iz grada na selo&kuot; destiluje svoja iskustva u praktične savete za druge koji traže sličnu transformaciju. Glebov narativ inspiriše dublju povezanost sa okruženjem i ispunjeniji način života."
+    }
+  },
+  "books": [
+    {
+      "title": "Meki povez",
+      "price": "£19.90",
+      "status": "Naručite odmah",
+      "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
+      "availability": true
+    },
+    {
+      "title": "Hardcover",
+      "price": "£39.90",
+      "status": "Nema na zalihi",
+      "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
+      "availability": false
+    },
+    {
+      "title": "e-Book",
+      "price": "£9.90",
+      "status": "Kupite sada",
+      "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
+      "availability": true
+    }
+  ]
+}
