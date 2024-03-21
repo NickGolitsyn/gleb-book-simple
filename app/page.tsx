@@ -54,7 +54,7 @@ export default function Home() {
       <section className="w-full py-12 px-10">
         <h1 className="text-3xl font-bold uppercase text-center px-10">How to move from the city to the countryside</h1>
         <p className="text-neutral-500 text-center my-5">
-        Embark on a transformative journey from the bustling city streets to the tranquil expanse of the countryside. This concise guide offers practical advice and step-by-step instructions for those dreaming of a simpler, more sustainable life amidst nature. Learn how to seamlessly transition to rural living, from selecting your new home to cultivating your own food and integrating into the countryside. Discover the essentials of growing produce, raising animals, and choosing the right tools to navigate your new lifestyle. Whether you're drawn to the peace of rural spaces or the independence of self-sufficiency, this book illuminates the path to achieving your countryside living dreams.
+        Embark on a transformative journey from the bustling city streets to the tranquil expanse of the countryside. This concise guide offers practical advice and step-by-step instructions for those dreaming of a simpler, more sustainable life amidst nature. Learn how to seamlessly transition to rural living, from selecting your new home to cultivating your own food and integrating into the countryside. Discover the essentials of growing produce, raising animals, and choosing the right tools to navigate your new lifestyle. Whether you are drawn to the peace of rural spaces or the independence of self-sufficiency, this book illuminates the path to achieving your countryside living dreams.
         </p>
         <h2 className="text-2xl font-semibold mb-3 text-center">Choose Your Book</h2>
         <div className="flex justify-around flex-wrap gap-5">
@@ -101,7 +101,7 @@ export default function Home() {
           <div className="space-y-3">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">About the Author</h2>
             <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-            Gleb Feels, a Serbian influencer renowned for his lifestyle shift from London's hustle to Serbia's tranquil countryside, shares his journey through TikTok and Instagram. Embracing rural life, Gleb advocates for self-sufficiency, from cultivating food to coexisting with nature. His book, "Moving from the City to the Countryside," distills his experiences into practical advice for others seeking a similar transformation. Gleb's narrative inspires a deeper connection with the environment and a more fulfilling way of life.
+            Gleb Feels, a Serbian influencer renowned for his lifestyle shift from London&apos;s hustle to Serbia&apos;s tranquil countryside, shares his journey through TikTok and Instagram. Embracing rural life, Gleb advocates for self-sufficiency, from cultivating food to coexisting with nature. His book, &quot;Moving from the City to the Countryside,&quot; distills his experiences into practical advice for others seeking a similar transformation. Gleb&apos;s narrative inspires a deeper connection with the environment and a more fulfilling way of life.
             </p>
           </div>
         </div>
