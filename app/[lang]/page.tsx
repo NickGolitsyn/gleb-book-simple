@@ -4,6 +4,7 @@ import cover from "@/public/cover.jpg"
 import Image from "next/image";
 import { Locale } from "@/i18n.config";
 import { getData } from "@/lib/dictionary";
+import banner from '@/public/banner.jpeg'
 
 export default async function Home({
   params: { lang }
@@ -14,6 +15,14 @@ export default async function Home({
   return (
     <div className="flex flex-col min-h-[100dvh]">
     <main className="flex-1">
+      <section className="aspect-video w-full relative sm:max-h-screen h-screen sm:h-auto">
+        <Image 
+          src={banner}
+          alt="banner"
+          layout="fill"
+          objectFit="cover" 
+        />
+      </section>
       <section className="w-full px-5 py-12 md:px-10">
         <h1 className="text-3xl font-bold uppercase text-center">{pages.home.bookTitle}</h1>
         <p className="text-neutral-500 text-center my-5 max-w-[600px] mx-auto">{pages.home.bookDesctiption}</p>
@@ -24,7 +33,7 @@ export default async function Home({
               <div className="flex justify-center">
                 <Image 
                   src={cover} 
-                  className="rounded-sm max-w-48 h-fit"
+                  className="rounded-sm max-w-48 lg:max-w-64 h-fit"
                   alt={"Book cover"}
                 />
               </div>

@@ -11,7 +11,7 @@ const localeIcons = {
   rs: rsIcon,
 };
 
-export default function LocaleSwitcher() {
+export default function LocaleSwitcher({bg} : {bg: Boolean}) {
   const pathName = usePathname()
 
   const redirectedPathName = (locale: string) => {
@@ -25,14 +25,22 @@ export default function LocaleSwitcher() {
     <div className='flex gap-x-3'>
       {i18n.locales.map(locale => {
         const isActive = pathName.startsWith(`/${locale}`)
-        const linkClassName = `rounded-md size-10 flex justify-center items-center border border-gray-500/10 ${isActive ? 'bg-blue-300 text-black font-semibold' : 'bg-slate-100 text-black'}`
+        const linkClassName = `rounded-md size-10 flex justify-center items-center border border-gray-500/10 ${
+          isActive
+            ? bg
+              ? "bg-blue-300 text-black font-semibold" // isActive && bg
+              : "bg-blue-300 bg-opacity-70 backdrop-blur-sm text-black font-semibold" // isActive && !bg
+            : bg
+            ? "bg-slate-100 text-black" // !isActive && bg
+            : "bg-slate-100 bg-opacity-70 backdrop-blur-sm text-black" // !isActive && !bg
+        }`;        
         return (
           <Link key={locale} className={linkClassName} href={redirectedPathName(locale)}>
             <Image
               src={localeIcons[locale]}
               width={20}
               height={20}
-              className=' rounded-[1.5px]'
+              className='rounded-[1.5px]'
               alt="Picture of the author"
             />
           </Link>

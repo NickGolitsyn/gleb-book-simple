@@ -1,32 +1,43 @@
-import { Locale } from '@/i18n.config'
-import Link from 'next/link'
-import React from 'react'
-import LocaleSwitcher from './localeSwitcher'
+'use client'
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import LocaleSwitcher from './localeSwitcher';
 
-export default function Navbar({ lang }: { lang: Locale }) {
+export default function Navbar() {
+  const [showBackground, setShowBackground] = useState(false);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setShowBackground(position > 20); // Change 100 to whatever number of pixels you prefer
+  };
+
+  const toggleBackground = () => setShowBackground(true);
+  const removeBackground = () => window.pageYOffset <= 100 && setShowBackground(false); // Remove background if not scrolled past 100 pixels
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center">
-      <Link className="flex items-center justify-center" href="#">
-        <MountainIcon className="h-6 w-6" />
+    <header
+      className={`px-4 lg:px-6 h-14 flex items-center fixed top-0 left-0 z-10 w-full border-b ${
+        showBackground ? 'bg-white shadow-lg' : 'bg-transparent'
+      } transition-colors duration-300 ease-in`}
+      onMouseEnter={toggleBackground}
+      onMouseLeave={removeBackground}
+    >
+      <Link href="#" className="flex items-center justify-center">
+        <MountainIcon className={`h-6 w-6 ${showBackground ? 'text-black' : 'text-white'}`} />
         <span className="sr-only">Gleb Feels</span>
       </Link>
       <nav className="ml-auto flex gap-4 sm:gap-6">
-        <LocaleSwitcher />
-        {/* <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-          Features
-        </Link>
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-          Pricing
-        </Link>
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-          About
-        </Link>
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-          Contact
-        </Link> */}
+        <LocaleSwitcher bg={showBackground} />
       </nav>
     </header>
-  )
+  );
 }
 
 function MountainIcon(props: any) {
