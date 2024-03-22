@@ -23,7 +23,7 @@ export default function RootLayout({
   params: { lang: Locale };
 }>) {
   return (
-    <html lang={params.lang}>
+    <html lang={params.lang} className="scroll-smooth scroll-pt-16">
       <body className={inter.className}>
         <Navbar />
         {children}

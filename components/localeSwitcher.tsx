@@ -28,11 +28,11 @@ export default function LocaleSwitcher({bg} : {bg: Boolean}) {
         const linkClassName = `rounded-md size-10 flex justify-center items-center border border-gray-500/10 ${
           isActive
             ? bg
-              ? "bg-blue-300 text-black font-semibold" // isActive && bg
-              : "bg-blue-300 bg-opacity-70 backdrop-blur-sm text-black font-semibold" // isActive && !bg
+              ? "bg-blue-300 font-semibold" // isActive && bg
+              : "bg-transparent border !border-blue-300 font-semibold" // isActive && !bg
             : bg
-            ? "bg-slate-100 text-black" // !isActive && bg
-            : "bg-slate-100 bg-opacity-70 backdrop-blur-sm text-black" // !isActive && !bg
+            ? "bg-slate-100" // !isActive && bg
+            : "bg-transparent" // !isActive && !bg
         }`;        
         return (
           <Link key={locale} className={linkClassName} href={redirectedPathName(locale)}>

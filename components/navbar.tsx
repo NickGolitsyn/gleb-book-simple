@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`px-4 lg:px-6 h-14 flex items-center fixed top-0 left-0 z-10 w-full border-b ${
+      className={`px-4 lg:px-6 h-14 flex items-center fixed top-0 left-0 z-50 w-full border-b ${
         showBackground ? 'bg-white shadow-lg' : 'bg-transparent'
       } transition-colors duration-300 ease-in`}
       onMouseEnter={toggleBackground}
