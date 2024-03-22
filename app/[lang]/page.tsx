@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import cover from "@/public/cover.jpg"
-import RScover from "@/public/coverrs.jpg"
 import Image from "next/image";
 import { Locale } from "@/i18n.config";
 import { getData } from "@/lib/dictionary";
-import banner from '@/public/banner.jpeg'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
+import cover from "@/public/cover.jpg"
+import RScover from "@/public/coverrs.jpeg"
+import gleb from "@/public/gleb.jpeg"
+import banner from '@/public/banner.jpeg'
 
 export default async function Home({
   params: { lang }
@@ -27,8 +29,8 @@ export default async function Home({
         <Image 
           src={banner}
           alt="banner"
-          layout="fill"
-          objectFit="cover" 
+          fill
+          style={{objectFit:"cover"}}
         />
       </section>
       <section className="w-full px-5 py-12 md:px-10">
@@ -123,16 +125,26 @@ export default async function Home({
             </div>
           </TabsContent>
         </Tabs>
-        
       </section>
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-neutral-100 dark:bg-neutral-800">
-        <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
-          <div className="space-y-3">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">{pages.home.aboutAuthor}</h2>
-            <p className="mx-auto max-w-[600px] text-neutral-500">{pages.home.authorDescription}</p>
+      <section className="flex bg-neutral-100">
+        <div className="container flex flex-col sm:flex-row items-center justify-center gap-4 w-full p-0">
+          <div className="sm:w-1/2 space-y-3 w-full text-center px-5 my-5">
+            <h2 className="text-2xl font-bold tracking-tighter">{pages.home.aboutAuthor}</h2>
+            <p className="mx-auto text-sm md:text-base text-neutral-500">{pages.home.authorDescription}</p>
+          </div>
+          <div className="sm:w-1/2 hidden sm:flex items-center justify-center">
+            <Image 
+              src={gleb} 
+              alt="Photo of Gleb" 
+              layout="responsive"
+              width={500} // Example width, adjust as needed
+              height={500} // Adjust the height to maintain the square aspect ratio
+            />
           </div>
         </div>
       </section>
+
+
       {/* <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
           <div className="space-y-3">
@@ -159,17 +171,6 @@ export default async function Home({
         </div>
       </section> */}
     </main>
-    <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-      <p className="text-xs text-neutral-500 dark:text-neutral-400">© 2024 Acme Inc. All rights reserved.</p>
-      <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-        <Link className="text-xs hover:underline underline-offset-4" href="#">
-          Terms of Service
-        </Link>
-        <Link className="text-xs hover:underline underline-offset-4" href="#">
-          Privacy
-        </Link>
-      </nav>
-    </footer>
   </div>
   );
 }
