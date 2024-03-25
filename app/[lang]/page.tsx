@@ -5,17 +5,16 @@ import { Locale } from "@/i18n.config";
 import { getData } from "@/lib/dictionary";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import cover from "@/public/cover.jpg"
-import RScover from "@/public/coverrs.jpeg"
 import gleb from "@/public/gleb.jpeg"
 import banner from '@/public/banner.jpeg'
+import Books from "@/components/books";
 
 export default async function Home({
   params: { lang }
 }: {
   params: { lang: Locale }
 }) {
-  const { pages, books } = await getData(lang);
+  const { pages } = await getData(lang);
   return (
     <div className="flex flex-col min-h-[100dvh]">
     <main className="flex-1">
@@ -45,89 +44,15 @@ export default async function Home({
           </TabsList>
           </div>
           <TabsContent value="en">
-            <div className="flex justify-around flex-wrap gap-5">
-              {books.map((e, index) => (
-                <div key={index}>
-                  <div className="flex justify-center">
-                    <Image 
-                      src={cover} 
-                      className="rounded-sm max-w-48 lg:max-w-64 h-fit"
-                      alt={"Book cover"}
-                    />
-                  </div>
-                  <div className="max-w-[500px] max-md:mx-auto flex flex-col justify-center space-y-1 lg:col-span-2 xl:space-y-2">
-                    <div className="space-y-2">
-                      <h1 className="text-xl font-medium">
-                        {e.title} 🇬🇧
-                      </h1>
-                    </div>
-                    <div className="font-medium text-neutral-500">
-                      <span>{e.price}</span>
-                    </div>
-                    <div>
-                      {e.availability ? (
-                        <Button asChild>
-                          <Link href={e.link} className="w-full mt-3">
-                            {e.status}
-                          </Link>
-                        </Button>
-                      ) : (
-                        <Button variant="secondary" asChild>
-                          <span className="w-full mt-3 cursor-default">
-                            {e.status}
-                          </span>
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Books params={{lang}} coverLang='en' />
           </TabsContent>
           <TabsContent value="rs">
-            <div className="flex justify-around flex-wrap gap-5">
-              {books.map((e, index) => (
-                <div key={index}>
-                  <div className="flex justify-center">
-                    <Image 
-                      src={RScover} 
-                      className="rounded-sm max-w-48 lg:max-w-64 h-fit"
-                      alt={"Book cover"}
-                    />
-                  </div>
-                  <div className="max-w-[500px] max-md:mx-auto flex flex-col justify-center space-y-1 lg:col-span-2 xl:space-y-2">
-                    <div className="space-y-2">
-                      <h1 className="text-xl font-medium">
-                        {e.title} 🇷🇸
-                      </h1>
-                    </div>
-                    <div className="font-medium text-neutral-500">
-                      <span>{e.price}</span>
-                    </div>
-                    <div>
-                      {e.availability ? (
-                        <Button asChild>
-                          <Link href={e.link} className="w-full mt-3">
-                            {e.status}
-                          </Link>
-                        </Button>
-                      ) : (
-                        <Button variant="secondary" asChild>
-                          <span className="w-full mt-3 cursor-default">
-                            {e.status}
-                          </span>
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Books params={{lang}} coverLang='rs' />
           </TabsContent>
         </Tabs>
       </section>
       <section className="flex bg-neutral-100">
-        <div className="container flex flex-col sm:flex-row items-center justify-center gap-4 w-full p-0">
+        <div className="container flex flex-col sm:flex-row items-center justify-center w-full p-0">
           <div className="sm:w-1/2 space-y-3 w-full text-center px-5 my-5">
             <h2 className="text-2xl font-bold tracking-tighter">{pages.home.aboutAuthor}</h2>
             <p className="mx-auto text-sm md:text-base text-neutral-500">{pages.home.authorDescription}</p>
