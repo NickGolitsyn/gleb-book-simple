@@ -16,6 +16,7 @@ export default function Navbar() {
   const removeBackground = () => window.pageYOffset <= 100 && setShowBackground(false); // Remove background if not scrolled past 100 pixels
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
