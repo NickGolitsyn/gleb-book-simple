@@ -1,25 +1,64 @@
+'use client'
 import Image from "next/image";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { motion, useInView } from "framer-motion"
 
 import cover from "@/public/cover.jpg"
 import RScover from "@/public/coverrs.jpeg"
-import { getData } from "@/lib/dictionary";
 import { Locale } from "@/i18n.config";
+import { useEffect, useRef, useState } from "react";
+import { fetchData } from "@/lib/fetchData";
 
-export default async function Books({
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (custom: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: custom * 0.5, duration: 1.0 },
+  }),
+  exit: { opacity: 0, y: -50 }, 
+};
+
+interface Book {
+  title: string;
+  price: string;
+  status: string;
+  link: string;
+  availability: boolean;
+}
+
+export default function Books({
   params: { lang },
   coverLang
 }: {
   params: { lang: Locale }
   coverLang: 'en' | 'rs'
 }) {
-  const { books } = await getData(lang);
+  const [books, setBooks] = useState<Book[]>([]);
   const imageSrc = coverLang === 'en' ? cover : RScover;
+
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const data = await fetchData(lang);
+      setBooks(data.books);
+    };
+    fetchBooks();
+  }, [lang]);
+
   return (
-    <div className="flex justify-around flex-wrap gap-5">
+    <div className="flex justify-around items-center flex-wrap gap-5 min-h-[450px] lg:min-h-[520px]" ref={ref}>
       {books.map((e, index) => (
-        <div key={index}>
+        <motion.div
+          key={index}
+          custom={index} // This will be used as the `custom` parameter in the variant
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           <div className="flex justify-center">
             <Image 
               src={imageSrc} 
@@ -52,7 +91,7 @@ export default async function Books({
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   )

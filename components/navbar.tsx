@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import LocaleSwitcher from './localeSwitcher';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const [showBackground, setShowBackground] = useState(false);
@@ -29,13 +30,24 @@ export default function Navbar() {
       onMouseEnter={toggleBackground}
       onMouseLeave={removeBackground}
     >
-      <Link href="#" className="flex items-center justify-center">
-        <MountainIcon className={`h-6 w-6 ${showBackground ? 'text-black' : 'text-white'}`} />
-        <span className="sr-only">Gleb Feels</span>
-      </Link>
-      <nav className="ml-auto flex gap-4 sm:gap-6">
+      <motion.div
+        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, x: -25 }}
+        transition={{ delay: 0.35 }}
+      >
+        <Link href="#" className="flex items-center justify-center">
+          <MountainIcon className={`h-6 w-6 ${showBackground ? 'text-black' : 'text-white'}`} />
+          <span className="sr-only">Gleb Feels</span>
+        </Link>
+      </motion.div>
+      <motion.nav
+        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, x: 25 }}
+        transition={{ delay: 0.35 }} 
+        className="ml-auto flex gap-4 sm:gap-6"
+      >
         <LocaleSwitcher bg={showBackground} />
-      </nav>
+      </motion.nav>
     </header>
   );
 }

@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import gleb from "@/public/gleb.jpeg"
 import banner from '@/public/banner.jpeg'
 import Books from "@/components/books";
+import About from "@/components/about";
 
 export default async function Home({
   params: { lang }
@@ -33,7 +34,7 @@ export default async function Home({
         />
       </section>
       <section className="w-full px-5 py-12 md:px-10">
-        <h1 className="text-3xl font-bold uppercase text-center">{pages.home.bookTitle}</h1>
+        <h1 className="text-3xl font-bold uppercase text-center">{pages.home.aboutBook}</h1>
         <p className="text-neutral-500 text-center my-5 max-w-[600px] mx-auto">{pages.home.bookDesctiption}</p>
         <h2 id="order" className="text-2xl font-semibold mb-3 text-center">{pages.home.choiceTitle}</h2>
         <Tabs defaultValue={lang}>
@@ -52,7 +53,7 @@ export default async function Home({
         </Tabs>
       </section>
       <section className="flex bg-neutral-100">
-        <div className="container flex flex-col sm:flex-row items-center justify-center w-full p-0">
+        {/* <div className="container flex flex-col sm:flex-row items-center justify-center w-full p-0">
           <div className="sm:w-1/2 space-y-3 w-full text-center px-5 my-5">
             <h2 className="text-2xl font-bold tracking-tighter">{pages.home.aboutAuthor}</h2>
             <p className="mx-auto text-sm md:text-base text-neutral-500">{pages.home.authorDescription}</p>
@@ -62,11 +63,12 @@ export default async function Home({
               src={gleb} 
               alt="Photo of Gleb" 
               layout="responsive"
-              width={500} // Example width, adjust as needed
-              height={500} // Adjust the height to maintain the square aspect ratio
+              width={500}
+              height={500} 
             />
           </div>
-        </div>
+        </div> */}
+        <About params={{lang}} />
       </section>
 
 
