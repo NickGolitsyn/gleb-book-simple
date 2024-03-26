@@ -4,6 +4,9 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion"
 
+import hardcover from "@/public/hardcover.png"
+import iphone from "@/public/iphone.png"
+import paperback from "@/public/paperback.png"
 import cover from "@/public/cover.jpg"
 import RScover from "@/public/coverrs.jpeg"
 import { Locale } from "@/i18n.config";
@@ -26,6 +29,7 @@ interface Book {
   status: string;
   link: string;
   availability: boolean;
+  image: string;
 }
 
 export default function Books({
@@ -40,6 +44,12 @@ export default function Books({
 
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
+
+  const image = [
+    paperback,
+    hardcover,
+    iphone
+  ]
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -61,15 +71,15 @@ export default function Books({
         >
           <div className="flex justify-center">
             <Image 
-              src={imageSrc} 
-              className="rounded-sm max-w-48 lg:max-w-64 h-fit"
+              src={image[index]} 
+              className="rounded-sm max-w-48 lg:max-w-64 h-fit aspect-square object-contain"
               alt={"Book cover"}
             />
           </div>
           <div className="max-w-[500px] max-md:mx-auto flex flex-col justify-center space-y-1 lg:col-span-2 xl:space-y-2">
             <div className="space-y-2">
               <h1 className="text-xl font-medium">
-                {e.title} 🇬🇧
+                {e.title} {coverLang === 'en' ? '🇬🇧' : '🇷🇸'}
               </h1>
             </div>
             <div className="font-medium text-neutral-500">
