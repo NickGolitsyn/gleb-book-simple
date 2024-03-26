@@ -18,9 +18,7 @@ interface PageData {
   };
 }
 
-export default function About({ params: { lang } }: { params: { lang: Locale } }) {
-  // const [data, setData] = useState<PageData | null>(null);
-  // const [error, setError] = useState<string | null>(null);
+export default function About({ params: { lang } } : { params: { lang: Locale } }) {
   const [data, setData] = useState<PageData | null>(null);
 
   useEffect(() => {
@@ -43,8 +41,8 @@ export default function About({ params: { lang } }: { params: { lang: Locale } }
         <h2 className="text-2xl font-bold tracking-tighter">{home.aboutAuthor}</h2>
         <p className="mx-auto text-sm md:text-base text-neutral-500">{home.authorDescription}</p>
       </div>
-      <div className="sm:w-1/2 hidden sm:flex items-center justify-center">
-        <Image src={gleb} alt="Photo of Gleb" layout="responsive" width={500} height={500} />
+      <div className="sm:w-1/2 hidden sm:flex items-center justify-center relative h-[700px]">
+        <Image src={gleb} alt="Photo of Gleb" fill style={{ objectFit: 'cover' }} />
       </div>
     </div>
   );
