@@ -25,13 +25,13 @@ export default function LocaleSwitcher({bg} : {bg: Boolean}) {
     <div className='flex gap-x-3'>
       {i18n.locales.map(locale => {
         const isActive = pathName.startsWith(`/${locale}`)
-        const linkClassName = `rounded-md size-10 flex justify-center items-center border border-gray-500/10 ${
+        const linkClassName = `rounded-md size-10 flex justify-center items-center border border-blue-800/30 ${
           isActive
             ? bg
-              ? "bg-blue-300 font-semibold" // isActive && bg
+              ? "bg-blue-100 font-semibold" // isActive && bg
               : "bg-transparent border !border-blue-300 font-semibold" // isActive && !bg
             : bg
-            ? "bg-slate-100" // !isActive && bg
+            ? "bg-[#f5f3e4]" // !isActive && bg
             : "bg-transparent" // !isActive && !bg
         }`;        
         return (

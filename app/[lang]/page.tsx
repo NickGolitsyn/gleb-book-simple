@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import Image from "next/image";
 import { Locale } from "@/i18n.config";
 import { getData } from "@/lib/dictionary";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -20,9 +17,9 @@ export default async function Home({
     <main className="flex-1">
       <Banner data={pages} />
       <section className="w-full px-5 py-12 md:px-10">
-        <h1 className="text-3xl font-bold uppercase text-center">{pages.home.aboutBook}</h1>
+        <h1 className="text-3xl text-blue-800 capitalize text-center">{pages.home.aboutBook}</h1>
         <p className="text-neutral-500 text-center my-5 max-w-[600px] mx-auto">{pages.home.bookDesctiption}</p>
-        <h2 id="order" className="text-2xl font-semibold mb-3 text-center">{pages.home.choiceTitle}</h2>
+        <h2 id="order" className="text-2xl text-blue-800 mb-3 text-center">{pages.home.choiceTitle}</h2>
         <Tabs defaultValue={lang}>
           <div className="flex w-full justify-center">
           <TabsList className="flex w-fit self-center mb-3">
@@ -38,7 +35,7 @@ export default async function Home({
           </TabsContent>
         </Tabs>
       </section>
-      <section className="flex bg-neutral-100">
+      <section className="flex bg-[#f5f3e4]">
         <About params={{lang}} />
       </section>
     </main>

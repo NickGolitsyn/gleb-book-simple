@@ -87,7 +87,7 @@ export default function Books({
             </div>
             <div>
               {e.availability ? (
-                <Button asChild>
+                <Button asChild variant="custom">
                   <Link href={e.link} className="w-full mt-3">
                     {e.status}
                   </Link>
