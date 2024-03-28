@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import { Locale, i18n } from "@/i18n.config";
 import Footer from "@/components/footer";
 import { Inter, Poppins } from "next/font/google";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] });
@@ -31,6 +32,7 @@ export default function RootLayout({
       {/* <body className={`${inter.className}`}> */}
         <Navbar />
         {children}
+        <Toaster />
         <Footer />
       </body>
     </html>

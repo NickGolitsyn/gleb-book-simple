@@ -13,17 +13,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import React from "react";
+import { useState } from "react";
 import { Textarea } from "./ui/textarea";
+import { ReloadIcon } from "@radix-ui/react-icons";
+import { useToast } from "@/components/ui/use-toast"
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email(),
-  message: z.string().min(2, {
-    message: "Message must contain at least 2 characters.",
-  }),
+  message: z.string().min(2, { message: "Message must contain at least 2 characters." }),
 });
 
 export function Contact() {
@@ -36,22 +34,46 @@ export function Contact() {
     },
   });
 
-  async function handleSubmit(formData: z.infer<typeof formSchema>) {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: process.env.NEXT_PUBLIC_WEB_FORM_KEY,
-        ...formData,
-      }),
-    });
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast(); // Initialize the useToast hook from shadcn/ui
 
-    const result = await response.json();
-    if (result.success) {
-      console.log(result);
+  async function handleSubmit(formData: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB_FORM_KEY,
+          ...formData,
+        }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Your message has been received.",
+          variant: "default"
+        }); // Show success toast
+      } else {
+        toast({
+          title: "Something went wrong. Please try again.",
+          description: "We encountered an error while processing your request.",
+          variant: "destructive",
+        }); // Show error toast
+      }
+    } catch (error) {
+      toast({
+        title: "An error occurred. Please try again.",
+        description: "An unexpected error occurred.",
+        variant: "destructive",
+      }); // Show error toast
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -64,7 +86,7 @@ export function Contact() {
       <h1 className="text-3xl text-blue-800 capitalize mb-5">Contact Us</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
+        <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
@@ -103,7 +125,16 @@ export function Contact() {
               </FormItem>
             )}
           />
-          <Button variant="custom" type="submit">Submit</Button>
+
+          <Button variant="custom" type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <>
+                <ReloadIcon className="mr-2 animate-spin" /> Loading
+              </>
+            ) : (
+              "Submit"
+            )}
+          </Button>
         </form>
       </Form>
     </div>
