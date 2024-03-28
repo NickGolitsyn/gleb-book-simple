@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Books from "@/components/books";
 import About from "@/components/about";
 import Banner from "@/components/banner";
+import Faq from "@/components/faq";
 
 export default async function Home({
   params: { lang }
@@ -18,7 +19,7 @@ export default async function Home({
       <Banner data={pages} />
       <section className="w-full px-5 py-12 md:px-10">
         <h1 className="text-3xl text-blue-800 capitalize text-center">{pages.home.aboutBook}</h1>
-        <p className="text-neutral-500 text-center my-5 max-w-[600px] mx-auto">{pages.home.bookDesctiption}</p>
+        <p className="text-neutral-500 text-center my-5 max-w-2xl mx-auto">{pages.home.bookDesctiption}</p>
         <h2 id="order" className="text-2xl text-blue-800 mb-3 text-center">{pages.home.choiceTitle}</h2>
         <Tabs defaultValue={lang}>
           <div className="flex w-full justify-center">
@@ -37,6 +38,9 @@ export default async function Home({
       </section>
       <section className="flex bg-[#f5f3e4]">
         <About params={{lang}} />
+      </section>
+      <section className="max-w-2xl mx-auto">
+        <Faq lang={lang} />
       </section>
     </main>
   </div>

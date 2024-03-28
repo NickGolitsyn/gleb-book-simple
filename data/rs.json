@@ -34,5 +34,63 @@
       "availability": true,
       "image": "iphone"
     }
+  ],
+  "faq": [
+    {
+      "q": "What is the book about?",
+      "a": "Provide a brief synopsis of the book, highlighting the main themes, genre, and what readers can expect."
+    },
+    {
+      "q": "Who is the author of the book?",
+      "a": "Give a short biography of the author, including their background, previous works, and what inspired them to write this book."
+    },
+    {
+      "q": "Are there any reviews or endorsements for the book?",
+      "a": "Mention any notable reviews, awards, or endorsements the book has received to encourage confidence in its quality."
+    },
+    {
+      "q": "What formats is the book available in?",
+      "a": "Explain that the book is available in paperback, hardcover, and eBook formats, and highlight any differences in content or design among them."
+    },
+    {
+      "q": "How can I purchase the book?",
+      "a": "Provide information on how customers can purchase each format of the book, including any online platforms or physical stores."
+    },
+    {
+      "q": "Is there a difference in price between the different formats?",
+      "a": "Discuss the pricing structure for the paperback, hardcover, and eBook versions, explaining why there may be differences in price."
+    },
+    {
+      "q": "Do you offer international shipping for physical books?",
+      "a": "Detail your shipping policies, including which countries you ship to and the estimated delivery times."
+    },
+    {
+      "q": "How much does shipping cost?",
+      "a": "Provide information on shipping rates, including any free shipping thresholds or promotions."
+    },
+    {
+      "q": "What devices can I read the eBook on?",
+      "a": "Explain the compatibility of the eBook with different devices and platforms, such as Kindle, Nook, iOS devices, Android devices, and PCs."
+    },
+    {
+      "q": "How will I receive the eBook after purchase?",
+      "a": "Describe the process of downloading the eBook or accessing it through a cloud-based reader after purchase."
+    },
+    {
+      "q": "What is your return policy for the book?",
+      "a": "Outline the return policy for both physical and eBook formats, including any conditions or time limits for returns."
+    },
+    {
+      "q": "How do I request a refund or exchange?",
+      "a": "Provide steps for customers to follow if they need to request a refund or exchange, including any necessary contact information or forms."
+    },
+    {
+      "q": "How can I contact customer support?",
+      "a": "Offer contact details for customer support, including email addresses, phone numbers, and hours of availability."
+    },
+    {
+      "q": "Are there any discounts available for bulk orders?",
+      "a": "If applicable, describe any discounts or special pricing available for schools, libraries, book clubs, or bulk orders."
+    }
   ]
 }
