@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion"
 
-import hardcover from "@/public/hardcover.png"
+import hardcover from "@/public/hardcoverlow.png"
 import iphone from "@/public/iphone.png"
 import paperback from "@/public/paperback.png"
 import cover from "@/public/cover.jpg"

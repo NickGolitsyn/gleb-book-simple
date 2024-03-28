@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import gleb from "@/public/gleb.jpeg";
+import gleb from "@/public/glebabout.jpg";
 import { useEffect, useState } from "react";
 import { fetchData } from "@/lib/fetchData";
 import { Locale } from "@/i18n.config";
