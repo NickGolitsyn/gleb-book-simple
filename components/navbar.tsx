@@ -37,7 +37,7 @@ export default function Navbar() {
         transition={{ delay: 0.35 }}
       >
         <Link href="#" className="flex items-center justify-center">
-          <MountainIcon className={`h-6 w-6 ${showBackground ? 'text-black' : 'text-white'}`} />
+          <MountainIcon className={`h-6 w-6 ${showBackground ? 'text-blue-800' : 'text-white'}`} />
           <span className="sr-only">Gleb Feels</span>
         </Link>
       </motion.div>

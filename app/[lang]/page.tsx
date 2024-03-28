@@ -6,6 +6,7 @@ import Books from "@/components/books";
 import About from "@/components/about";
 import Banner from "@/components/banner";
 import Faq from "@/components/faq";
+import { Contact } from "@/components/contact";
 
 export default async function Home({
   params: { lang }
@@ -39,8 +40,11 @@ export default async function Home({
       <section className="flex bg-[#f5f3e4]">
         <About params={{lang}} />
       </section>
-      <section className="max-w-2xl mx-auto">
+      <section className="max-w-2xl mx-auto py-10 px-5">
         <Faq lang={lang} />
+      </section>
+      <section className="max-w-2xl mx-auto py-10 px-5">
+        <Contact />
       </section>
     </main>
   </div>
