@@ -41,7 +41,7 @@ export default function Faq({data} : {data: FaqData}) {
             animate={isInView ? "visible" : "hidden"}
           >
             <AccordionItem value={`item-${index}`} key={index}>
-              <AccordionTrigger>{e.q} {index}</AccordionTrigger>
+              <AccordionTrigger>{e.q}</AccordionTrigger>
               <AccordionContent>{e.a}</AccordionContent>
             </AccordionItem>
           </motion.div>
