@@ -9,9 +9,7 @@ import iphone from "@/public/iphone.png"
 import paperback from "@/public/paperback.png"
 import cover from "@/public/cover.jpg"
 import RScover from "@/public/coverrs.jpeg"
-import { Locale } from "@/i18n.config";
-import { useEffect, useRef, useState } from "react";
-import { fetchData } from "@/lib/fetchData";
+import { useRef } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -33,13 +31,12 @@ interface Book {
 }
 
 export default function Books({
-  params: { lang },
+  data,
   coverLang
 }: {
-  params: { lang: Locale }
+  data: Book[],
   coverLang: 'en' | 'rs'
 }) {
-  const [books, setBooks] = useState<Book[]>([]);
   const imageSrc = coverLang === 'en' ? cover : RScover;
 
   const ref = useRef(null)
@@ -51,20 +48,12 @@ export default function Books({
     iphone
   ]
 
-  useEffect(() => {
-    const fetchBooks = async () => {
-      const data = await fetchData(lang);
-      setBooks(data.books);
-    };
-    fetchBooks();
-  }, [lang]);
-
   return (
     <div className="flex justify-around items-center flex-wrap gap-5 min-h-[450px] lg:min-h-[520px]" ref={ref}>
-      {books.map((e, index) => (
+      {data.map((e, index) => (
         <motion.div
           key={index}
-          custom={index} // This will be used as the `custom` parameter in the variant
+          custom={index}
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}

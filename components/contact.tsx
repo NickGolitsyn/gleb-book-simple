@@ -17,6 +17,7 @@ import { useState } from "react";
 import { Textarea } from "./ui/textarea";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useToast } from "@/components/ui/use-toast"
+import Link from "next/link";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -35,7 +36,7 @@ export function Contact() {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast(); // Initialize the useToast hook from shadcn/ui
+  const { toast } = useToast();
 
   async function handleSubmit(formData: z.infer<typeof formSchema>) {
     setIsLoading(true);
@@ -56,7 +57,6 @@ export function Contact() {
       if (result.success) {
         toast({
           title: "Message sent successfully!",
-          description: "Your message has been received.",
           variant: "default"
         }); // Show success toast
       } else {
@@ -84,59 +84,67 @@ export function Contact() {
   return (
     <div>
       <h1 className="text-3xl text-blue-800 capitalize mb-5">Contact Us</h1>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-blue-800">Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-blue-800">Email</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="Email" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-blue-800">Message</FormLabel>
-                <FormControl>
-                  <Textarea placeholder="Message" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      <div className="flex gap-5">
+        <div className="flex-grow">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+            <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-normal">Name:</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Name" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-normal">Email:</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="Email" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-normal">Message:</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Message" className="max-h-52" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <Button variant="custom" type="submit" disabled={isLoading}>
-            {isLoading ? (
-              <>
-                <ReloadIcon className="mr-2 animate-spin" /> Loading
-              </>
-            ) : (
-              "Submit"
-            )}
-          </Button>
-        </form>
-      </Form>
+              <Button variant="custom" type="submit" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <ReloadIcon className="mr-2 animate-spin" /> Loading
+                  </>
+                ) : (
+                  "Submit"
+                )}
+              </Button>
+            </form>
+          </Form>
+        </div>
+        <div className="flex-shrink">
+          <p className="text-sm">Email us:</p>
+          <Link href="mailto:glebfeels@gmail.com" className={`underline text-blue-800`}>glebfeels@gmail.com</Link>
+        </div>
+      </div>
     </div>
   );
 }
