@@ -7,8 +7,8 @@ import gbIcon from '@/public/gb.svg';
 import rsIcon from '@/public/rs.svg';
 
 const localeIcons = {
-  en: gbIcon,
   rs: rsIcon,
+  en: gbIcon,
 };
 
 export default function LocaleSwitcher({bg} : {bg: Boolean}) {

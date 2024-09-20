@@ -25,8 +25,8 @@ export default async function Home({
         <Tabs defaultValue={lang}>
           <div className="flex w-full justify-center">
           <TabsList className="flex w-fit self-center mb-3">
-            <TabsTrigger value="en">English 🇬🇧</TabsTrigger>
             <TabsTrigger value="rs">Srpski 🇷🇸</TabsTrigger>
+            <TabsTrigger value="en">English 🇬🇧</TabsTrigger>
           </TabsList>
           </div>
           <TabsContent value="en">

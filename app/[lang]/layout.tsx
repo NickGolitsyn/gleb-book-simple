@@ -4,7 +4,8 @@ import Navbar from "@/components/navbar";
 import { Locale, i18n } from "@/i18n.config";
 import Footer from "@/components/footer";
 import { Inter, Poppins } from "next/font/google";
-import { Toaster } from "@/components/ui/toaster";
+import CartProvider from "@/providers/CartProvider";
+import ShoppingCartModal from "@/components/ShoppingCartModal";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] });
@@ -30,10 +31,12 @@ export default function RootLayout({
       {/* <body className={`${inter.className} bg-[#f5f6f0]`}> */}
       <body className={`${poppins.className} bg-yellow-50`}>
       {/* <body className={`${inter.className}`}> */}
-        <Navbar />
-        {children}
-        <Toaster />
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          <ShoppingCartModal />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

@@ -3,9 +3,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import LocaleSwitcher from './localeSwitcher';
 import { motion } from 'framer-motion';
+import { useShoppingCart } from 'use-shopping-cart';
+import { Button } from './ui/button';
+import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 export default function Navbar() {
   const [showBackground, setShowBackground] = useState(false);
+  const { handleCartClick, cartCount } = useShoppingCart();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -25,7 +29,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`px-4 lg:px-6 h-14 flex items-center fixed top-0 left-0 z-50 w-full border-b border-lime-50 ${
+      className={`px-4 lg:px-6 h-14 flex items-center fixed top-0 left-0 z-40 w-full border-b border-lime-50 ${
         showBackground ? 'bg-yellow-50 shadow-lg' : 'bg-transparent'
       } transition-colors duration-300 ease-in`}
       onMouseEnter={toggleBackground}
@@ -36,7 +40,7 @@ export default function Navbar() {
         initial={{ opacity: 0, x: -25 }}
         transition={{ delay: 0.35 }}
       >
-        <Link href="#" className="flex items-center justify-center">
+        <Link href="/" className="flex items-center justify-center">
           <MountainIcon className={`h-6 w-6 ${showBackground ? 'text-blue-800' : 'text-white'}`} />
           <span className="sr-only">Gleb Feels</span>
         </Link>
@@ -48,6 +52,13 @@ export default function Navbar() {
         className="ml-auto flex gap-4 sm:gap-6"
       >
         <LocaleSwitcher bg={showBackground} />
+        <Button
+          onClick={() => handleCartClick()}
+          className="bg-transparent text-black"
+        >
+          <ShoppingCartIcon className='size-4' />
+          <span>{cartCount}</span>
+        </Button>
       </motion.nav>
     </header>
   );
