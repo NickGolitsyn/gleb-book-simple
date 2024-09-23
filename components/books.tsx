@@ -10,6 +10,7 @@ import paperback from "@/public/paperback.png"
 import cover from "@/public/cover.jpg"
 import RScover from "@/public/coverrs.jpeg"
 import { useRef } from "react";
+import AddToCart from "./addToCart";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -28,6 +29,7 @@ interface Book {
   link: string;
   availability: boolean;
   image: string;
+  price_id: string;
 }
 
 export default function Books({
@@ -76,11 +78,20 @@ export default function Books({
             </div>
             <div>
               {e.availability ? (
-                <Button asChild variant="custom">
-                  <Link href={e.link} className="w-full mt-3">
-                    {e.status}
-                  </Link>
-                </Button>
+                // <Button asChild variant="custom">
+                //   <Link href={e.link} className="w-full mt-3">
+                //     {e.status}
+                //   </Link>
+                // </Button>
+                <AddToCart
+                  key={index}
+                  currency="EUR"
+                  description={'Paperback descption'}
+                  // image={data.images[0]}
+                  name={e.title}
+                  price={parseInt(e.price)}
+                  price_id={e.price_id}
+                />
               ) : (
                 <Button variant="secondary" asChild>
                   <span className="w-full mt-3 cursor-default">

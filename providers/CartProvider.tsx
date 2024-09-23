@@ -8,10 +8,10 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     <USCProvider
       mode="payment"
       cartMode="client-only"
-      stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
+      stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string}
       successUrl="http://localhost:3000"
       cancelUrl="http://localhost:3000/cancel"
-      currency="GBP"
+      currency="EUR"
       billingAddressCollection={true}
       shouldPersist={true}
       language="en-GB"

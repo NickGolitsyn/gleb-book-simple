@@ -12,27 +12,30 @@
   "books": [
     {
       "title": "Paperback",
-      "price": "19.90€",
+      "price": "10.00€",
       "status": "Pre-order now",
       "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
       "availability": true,
-      "image": "paperback"
+      "image": "paperback",
+      "price_id": "price_1Q29kg04VFCp22cWJm1aGpIj"
     },
     {
       "title": "Hardcover",
-      "price": "39.90€",
+      "price": "20.00€",
       "status": "Out of stock",
       "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
-      "availability": false,
-      "image": "hardcover"
+      "availability": true,
+      "image": "hardcover",
+      "price_id": "price_1Q2ANp04VFCp22cW6l4OjSo2"
     },
     {
       "title": "e-Book",
-      "price": "9.90€",
+      "price": "5.00€",
       "status": "Buy now",
       "link": "https://buy.stripe.com/test_7sI9Ca5i8e2k14A001",
       "availability": true,
-      "image": "iphone"
+      "image": "iphone",
+      "price_id": "price_1Q2APj04VFCp22cWLRXYE5JE"
     }
   ],
   "faq": [
